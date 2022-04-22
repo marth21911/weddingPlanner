@@ -30,7 +30,6 @@
                     {
                         <td><a href="/delete/@a.WeddingId" class="btn btn-danger">Delete</a></td>
                     } else{
-                        <p>found status: @found userInSession : @ViewBag.UserinSession  userWhoMadeThis: @a.UserId</p>
                         @* if not the creator we go to else *@
                         if(@a.Attendees.Count() <= 0 && ViewBag.UserinSession != a.UserId)
                         {
@@ -42,25 +41,21 @@
                         }else{
                         @foreach (Event b in a.Attendees)
                         {
-                            <p>found status: @found userInSession : @ViewBag.UserinSession  userWhoMadeThis: @a.UserId</p>
                             @* loop through each entry in Attendees, which is a list of Users attending wedding *@
                             @if(ViewBag.UserinSession == b.UserId)
                             
                             @* if the user in session matches a user id in the attendees list (not the user id for creating) *@
                                 {
                                     found=true;
-                                    <p> found status: @found userInSession : @ViewBag.UserinSession  userWhoMadeThis: @a.UserId</p>
                                 }
                             @if(found == true && ViewBag.UserinSession != a.UserId)
                                 {
                                     <td><a href="/unrsvp/@a.WeddingId" class="btn btn-danger">Un RSVP</a></td>
-                                    <p> found status: @found userInSession : @ViewBag.UserinSession  userWhoMadeThis: @a.UserId</p>
                             @* if the user Id was found in the Attendees list, and is not the creator (indicated by a.UserId instead of b.) *@
                                     @* render a link for unrsvp *@
                                 }
                                 @if(found == false && ViewBag.UserinSession != a.UserId)
                                     {
-                                    <p> found status: @found userInSession : @ViewBag.UserinSession  userWhoMadeThis: @a.UserId</p>
                                     <form action="/rsvp" method="post">
                                         <input type="hidden" name="WeddingId" value="@a.WeddingId">
                                         <input type="hidden" name="UserId" value="@ViewBag.UserinSession">

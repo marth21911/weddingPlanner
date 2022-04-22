@@ -86,7 +86,6 @@ namespace weddingPlanner.Controllers
         int UserinSession = (int) HttpContext.Session.GetInt32("UserId");
         var unRsvper = _context.SharedEvent.FirstOrDefault(a=>a.WeddingId == wedId && a.UserId == UserinSession);
         _context.SharedEvent.Remove(unRsvper);
-        Console.WriteLine(unRsvper.EventId);
         _context.SaveChanges();
 
             return RedirectToAction("Dashboard");
