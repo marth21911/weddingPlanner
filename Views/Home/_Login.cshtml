@@ -1,0 +1,11 @@
+@model LogUser
+        <form action="/login" method = "post">
+
+            <label for="LogEmail">Email</label>
+                <input asp-for="LogEmail" value="z@m.com">
+                <span asp-validation-for="LogEmail" class="text-danger"></span>
+            <label for="ConfirmPassword">Password</label>
+                <input asp-for="LogPassword" value="password">
+                <span asp-validation-for="LogPassword" class="text-danger"></span>
+            <input type="submit" class="btn btn-success" name="" id="">
+        </form>

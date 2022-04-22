@@ -1,0 +1,14 @@
+@model Wedding
+<h1>@ViewBag.OneWedding.WedOne and @ViewBag.OneWedding.WedTwo are getting MARRIED!</h1>
+<a href="/logout">Logout</a>
+<a href="/dashboard">Dashboard</a>
+<h3>Save the date: @ViewBag.OneWedding.WedDate</h3>
+<h3>Guest List</h3>
+<ul>
+    @foreach (Event a in ViewBag.OneWedding.Attendees)
+    {
+        <li>@a.User.FName @a.User.LName</li>
+    }
+</ul>
+<h1><marquee>And its going down at @ViewBag.OneWedding.Address</marquee></h1>
+
